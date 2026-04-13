@@ -1,0 +1,25 @@
+// testbench
+module testbench;
+
+    // declare inputs as reg (you control these)
+    reg  A, B, cin;
+
+    // declare outputs as wire (module controls these)
+    wire sum, cout;
+
+    // connect your full adder
+    full_adder_gate uut(A, B, cin, sum, cout);
+
+    initial begin
+        // Test all 8 combinations
+        A = 0; B = 0; cin = 0; #10;
+        A = 0; B = 0; cin = 1; #10;
+        A = 0; B = 1; cin = 0; #10;
+        A = 0; B = 1; cin = 1; #10;
+        A = 1; B = 0; cin = 0; #10;
+        A = 1; B = 0; cin = 1; #10;
+        A = 1; B = 1; cin = 0; #10;
+        A = 1; B = 1; cin = 1; #10;
+    end
+
+endmodule

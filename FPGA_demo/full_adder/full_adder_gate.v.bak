@@ -1,0 +1,33 @@
+/*============================================================================
+                           FULL-ADDER MODULE
+============================================================================
+Description:
+    Full adder using gate-level modeling.
+	 
+Design Engineer:
+	Reenylle Y. Jocson
+	
+Date:
+    14 April 2026
+*/
+
+module full_adder(sum, cout, A, B, cin);
+
+    // ports
+    input  A;
+    input  B;
+    input  cin;
+    output sum;
+    output cout;
+
+    // nets
+    wire w1, w2, w3;
+
+    // gate instantiations (matching schematic)
+    xor u1(w1, A, B);       // A XOR B
+    and u3(w2, A, B);       // A AND B
+    and u4(w3, w1, cin);    // (A XOR B) AND cin
+    xor u2(sum, w1, cin);   // (A XOR B) XOR cin  → SUM
+    or  u5(cout, w2, w3);   // (A AND B) OR (w1 AND cin) → COUT
+
+endmodule
